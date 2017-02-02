@@ -3,7 +3,7 @@ var gulp = require('gulp'),
     rename  = require('gulp-rename'),
     del = require("del"),
     sourcemaps = require('gulp-sourcemaps'),
-    minifyCss = require('gulp-minify-css'),
+    cleanCSS = require('gulp-clean-css'),
     concatjs = require('gulp-concat');
     concatCss = require('gulp-concat-css'),
     uglify = require('gulp-uglify');
@@ -75,7 +75,7 @@ gulp.task('styles',['styles:temp'], function () {
       './bower_components/material-design-lite/material.css'
     ])
     .pipe(concatCss("main.css"))
-    .pipe(minifyCss())
+    .pipe(cleanCSS({compatibility: 'ie8'}))
     .pipe(gulp.dest('./dist/styles/'))
 });
 
